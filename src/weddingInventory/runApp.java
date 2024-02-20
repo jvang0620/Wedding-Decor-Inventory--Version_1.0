@@ -9,8 +9,6 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-// import java.nio.file.Files;
-// import java.nio.file.Paths;
 
 public class runApp {
 
@@ -20,6 +18,9 @@ public class runApp {
      * Processes user input to create inventory items.
      */
     public static void processUserInput() {
+
+        // Load inventory data from CSV file
+        InventoryFileManager.readInventoryFromCSV(inventoryList);
 
         // Scanner instance
         Scanner scanner = new Scanner(System.in);
@@ -169,7 +170,12 @@ public class runApp {
                         System.out.println("\nYou selected to exit the program");
                         System.out.println("Have a great day!\n");
 
-                        exitProgram = true; // Set exit flag to true to terminate the loop
+                        // Before exiting the program, iterate through the inventory list and write each
+                        // inventory item to the CSV file.
+                        InventoryFileManager.writeInventoryToCSV(inventoryList);
+
+                        // Set exit flag to true to terminate the loop
+                        exitProgram = true;
                         break;
 
                     default:
@@ -185,36 +191,6 @@ public class runApp {
         scanner.close(); // Closing scanner to release resources
 
     }
-
-    // /**
-    // * Writes an inventory item to a file.
-    // *
-    // * @param inventoryItem The inventory item to write to the file.
-    // */
-    // private static void writeInventoryToFile(Inventory inventoryItem) {
-    // try (BufferedWriter writer = new BufferedWriter(new
-    // FileWriter("inventory.csv", true))) {
-    // // Write the headers if the file is empty or does not exist
-    // if (!Files.exists(Paths.get("inventory.csv")) ||
-    // Files.size(Paths.get("inventory.csv")) == 0) {
-    // writer.write("Name,Quantity,Type of Greeneries,Type of Vases,Type of Table
-    // Runners");
-    // writer.newLine();
-    // }
-
-    // // Write the inventory item's values
-    // writer.write(String.format("%s,%d,%s,%s,%s",
-    // inventoryItem.getNameOfItem(),
-    // inventoryItem.getQuantity(),
-    // inventoryItem.isTypeGreeneries() ? "Yes" : "No",
-    // inventoryItem.isTypeVases() ? "Yes" : "No",
-    // inventoryItem.isTypeTableRunners() ? "Yes" : "No"));
-    // writer.newLine();
-    // } catch (IOException e) {
-    // System.out.println("Error writing inventory item to file: " +
-    // e.getMessage());
-    // }
-    // }
 
     /**
      * Generates a report of the overall inventory in a CSV file.

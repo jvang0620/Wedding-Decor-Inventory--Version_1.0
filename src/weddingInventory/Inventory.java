@@ -163,4 +163,24 @@ public class Inventory {
         }
         return sb.toString();
     }
+
+    /**
+     * This method converts an Inventory object into a CSV formatted string.
+     * 
+     * @return a CSV formatted string
+     */
+    public String toCSVString() {
+        String type;
+        if (isTypeGreeneries()) {
+            type = "Greenery";
+        } else if (isTypeVases()) {
+            type = "Vase";
+        } else if (isTypeTableRunners()) {
+            type = "Table Runner";
+        } else {
+            type = "Unknown";
+        }
+        return String.format("%s,%s,%d", type, getNameOfItem(), getQuantity());
+    }
+
 }
