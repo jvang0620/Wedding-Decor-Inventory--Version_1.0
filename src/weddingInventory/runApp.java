@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+// import java.io.BufferedWriter;
+// import java.io.FileWriter;
+// import java.io.IOException;
+// import java.nio.file.Files;
+// import java.nio.file.Paths;
 
 public class runApp {
 
@@ -111,6 +116,10 @@ public class runApp {
                             // Print message and object representation
                             System.out.println(newItem.toStringDetails());
 
+                            // TODO Later
+                            // Write the newly created inventory item to a file
+                            // writeInventoryToFile(newItem);
+
                         } catch (InputMismatchException e) {
                             System.out.println("\nCaught InputMismatchException. Please enter a valid entry.");
                         } catch (Exception e) {
@@ -119,7 +128,36 @@ public class runApp {
                         }
                         break;
 
+                    // View Inventory
                     case 2:
+                        System.out.println("\n******** View Inventory ********\n");
+                        if (inventoryList.isEmpty()) {
+                            System.out.println("Inventory is empty.");
+                        } else {
+                            // Group inventory items by type
+                            List<Inventory> greeneryItems = new ArrayList<>();
+                            List<Inventory> vaseItems = new ArrayList<>();
+                            List<Inventory> tableRunnerItems = new ArrayList<>();
+
+                            for (Inventory item : inventoryList) {
+                                if (item.isTypeGreeneries()) {
+                                    greeneryItems.add(item);
+                                } else if (item.isTypeVases()) {
+                                    vaseItems.add(item);
+                                } else if (item.isTypeTableRunners()) {
+                                    tableRunnerItems.add(item);
+                                }
+                            }
+
+                            // Print greenery items
+                            printInventoryByType("Greenery", greeneryItems);
+
+                            // Print vase items
+                            printInventoryByType("Vase", vaseItems);
+
+                            // Print table runner items
+                            printInventoryByType("Table Runner", tableRunnerItems);
+                        }
                         break;
 
                     case 3:
@@ -145,6 +183,57 @@ public class runApp {
 
         scanner.close(); // Closing scanner to release resources
 
+    }
+
+    // /**
+    // * Writes an inventory item to a file.
+    // *
+    // * @param inventoryItem The inventory item to write to the file.
+    // */
+    // private static void writeInventoryToFile(Inventory inventoryItem) {
+    // try (BufferedWriter writer = new BufferedWriter(new
+    // FileWriter("inventory.csv", true))) {
+    // // Write the headers if the file is empty or does not exist
+    // if (!Files.exists(Paths.get("inventory.csv")) ||
+    // Files.size(Paths.get("inventory.csv")) == 0) {
+    // writer.write("Name,Quantity,Type of Greeneries,Type of Vases,Type of Table
+    // Runners");
+    // writer.newLine();
+    // }
+
+    // // Write the inventory item's values
+    // writer.write(String.format("%s,%d,%s,%s,%s",
+    // inventoryItem.getNameOfItem(),
+    // inventoryItem.getQuantity(),
+    // inventoryItem.isTypeGreeneries() ? "Yes" : "No",
+    // inventoryItem.isTypeVases() ? "Yes" : "No",
+    // inventoryItem.isTypeTableRunners() ? "Yes" : "No"));
+    // writer.newLine();
+    // } catch (IOException e) {
+    // System.out.println("Error writing inventory item to file: " +
+    // e.getMessage());
+    // }
+    // }
+
+    /**
+     * This method takes the type of inventory items and a list of inventory items
+     * as parameters.
+     * It prints the type first and then loops through the items to print their
+     * names and quantities.
+     * If the list of items is empty, it does not print anything for that type.
+     * 
+     * @param type
+     * @param items
+     */
+    private static void printInventoryByType(String type, List<Inventory> items) {
+        if (!items.isEmpty()) {
+            System.out.println("Type: " + type);
+            System.out.printf("%-20s %-10s%n", "Name", "Quantity");
+            for (Inventory item : items) {
+                System.out.printf("%-20s %-10d%n", item.getNameOfItem(), item.getQuantity());
+            }
+            System.out.println(); // Add a newline after printing items of this type
+        }
     }
 
     /**
