@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-// import java.io.BufferedWriter;
-// import java.io.FileWriter;
-// import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 // import java.nio.file.Files;
 // import java.nio.file.Paths;
 
@@ -116,9 +116,8 @@ public class runApp {
                             // Print message and object representation
                             System.out.println(newItem.toStringDetails());
 
-                            // TODO Later
-                            // Write the newly created inventory item to a file
-                            // writeInventoryToFile(newItem);
+                            // Generate inventory report after adding the new item
+                            generateInventoryReport();
 
                         } catch (InputMismatchException e) {
                             System.out.println("\nCaught InputMismatchException. Please enter a valid entry.");
@@ -160,7 +159,9 @@ public class runApp {
                         }
                         break;
 
+                    // Generate Report
                     case 3:
+                        generateInventoryReport();
                         break;
 
                     // Exit Program
@@ -214,6 +215,42 @@ public class runApp {
     // e.getMessage());
     // }
     // }
+
+    /**
+     * Generates a report of the overall inventory in a CSV file.
+     */
+    private static void generateInventoryReport() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory_report.csv"))) {
+            // Write headers
+            writer.write("TYPE,NAME,QUANITY\n");
+
+            // Write inventory items
+            writeInventoryByTypeToCSV("Greenery", inventoryList.stream().filter(Inventory::isTypeGreeneries).toList(),
+                    writer);
+            writeInventoryByTypeToCSV("Vase", inventoryList.stream().filter(Inventory::isTypeVases).toList(), writer);
+            writeInventoryByTypeToCSV("Table Runner",
+                    inventoryList.stream().filter(Inventory::isTypeTableRunners).toList(), writer);
+
+            System.out.println("Inventory report generated successfully.");
+        } catch (IOException e) {
+            System.out.println("Error generating inventory report: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Writes inventory items of a specific type to the CSV file.
+     * 
+     * @param type   The type of inventory items.
+     * @param items  The list of inventory items.
+     * @param writer The BufferedWriter object for writing to the file.
+     * @throws IOException If an I/O error occurs.
+     */
+    private static void writeInventoryByTypeToCSV(String type, List<Inventory> items, BufferedWriter writer)
+            throws IOException {
+        for (Inventory item : items) {
+            writer.write(String.format("%s,%s,%d\n", type, item.getNameOfItem(), item.getQuantity()));
+        }
+    }
 
     /**
      * This method takes the type of inventory items and a list of inventory items
