@@ -147,7 +147,7 @@ public class Inventory {
      */
     public String toStringDetails() {
         StringBuilder sb = new StringBuilder();
-        sb.append("******** New Inventory ********\n");
+        sb.append("******** New Inventory Created ********\n");
         sb.append("Name: ").append(nameOfItem).append("\n");
         sb.append("Quantity: ").append(quantity).append("\n");
         sb.append("Type of Wedding Decor: ");

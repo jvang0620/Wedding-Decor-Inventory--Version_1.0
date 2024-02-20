@@ -12,18 +12,6 @@ public class runApp {
     private static List<Inventory> inventoryList = new ArrayList<>();
 
     /**
-     * Displays the home page of the application.
-     */
-    public static void displayHomePage() {
-        System.out.println("\n******** Wedding Inventory App ******** \n");
-        System.out.println("1. Create Inventory");
-        System.out.println("2. View Inventory");
-        System.out.println("3. Generate Report");
-        System.out.println("4. Exit App \n");
-        System.out.println("**Please select a number (1 - 4)**");
-    }
-
-    /**
      * Processes user input to create inventory items.
      */
     public static void processUserInput() {
@@ -31,112 +19,132 @@ public class runApp {
         // Scanner instance
         Scanner scanner = new Scanner(System.in);
 
-        // Validate user input to ensure it's within the range 1-4 and handle
-        // non-numeric inputs
-        try {
+        // Set exit flag to false to enable infinite looping of program
+        boolean exitProgram = false;
 
-            // Read user input
-            int number = scanner.nextInt();
+        // Program will keep looping until user select '4' in the homepage
+        while (!exitProgram) {
+            try {
+                // Displays the home page of the application.
+                System.out.println("\n******** Wedding Inventory App ******** \n");
+                System.out.println("1. Create Inventory");
+                System.out.println("2. View Inventory");
+                System.out.println("3. Generate Report");
+                System.out.println("4. Exit App \n");
+                System.out.println("**Please select a number (1 - 4)**");
 
-            // Consume the newline character left in the input stream
-            scanner.nextLine();
+                // Read user input
+                int number = scanner.nextInt();
 
-            // Initialize variables to track user input
-            String nameOfItem = "";
-            int quantity = 0;
-            boolean isGreenery = false;
-            boolean isVases = false;
-            boolean isTableRunner = false;
+                // Consume the newline character left in the input stream
+                scanner.nextLine();
 
-            switch (number) {
-                case 1:
-                    // try {
-                    System.out.println("\n******** Create Inventory ******** \n");
+                // Initialize variables to track user input
+                String nameOfItem = "";
+                int quantity = 0;
+                boolean isGreenery = false;
+                boolean isVases = false;
+                boolean isTableRunner = false;
 
-                    // PROMTE user to input name of item
-                    System.out.println("Enter name of item:");
-                    nameOfItem = scanner.nextLine();
+                switch (number) {
 
-                    // PROMTE user to input quantity of item. Keep looping if input is non-numeric
-                    // character or negative number
-                    while (true) {
-                        System.out.println("Enter quantity of item:");
-                        if (scanner.hasNextInt()) {
-                            quantity = scanner.nextInt();
-                            if (quantity >= 0) {
-                                // Valid quantity entered, break out of the loop
-                                break;
-                            } else {
-                                System.out.println(
-                                        "Quantity cannot be negative. Please enter a non-negative number.\n");
-                            }
-                        } else {
-                            // Invalid input, consume the invalid token and prompt the user again
-                            System.out.println("Invalid input. Please enter a non-negative number.\n");
-                            scanner.next(); // Consume the invalid token
-                        }
-                    }
+                    // Create Inventory
+                    case 1:
+                        try {
+                            System.out.println("\n******** Create Inventory ******** \n");
 
-                    // PROMTE user to input true/false value for type of item.
-                    // Keep prompting until at least one type is selected
-                    while (!isGreenery && !isVases && !isTableRunner) {
-                        // Prompt user for greenery option
-                        isGreenery = promptForBoolean("Is your item a Greenery? (Enter 'Y' for yes and 'N' for no)",
-                                scanner);
-                        if (!isGreenery) {
-                            // If greenery is false, prompt for vases option
-                            isVases = promptForBoolean("Is your item a Vase? (Enter 'Y' for yes and 'N' for no)",
-                                    scanner);
-                            if (!isVases) {
-                                // If both greenery and vases are false, prompt for table runner option
-                                isTableRunner = promptForBoolean(
-                                        "Is your item a Table Runner? (Enter 'Y' for yes and 'N' for no)", scanner);
-                                if (!isTableRunner) {
-                                    System.out.println("\nYou CANNOT enter 'N' for all three.");
-                                    System.out.println("You MUST choose the 'Y' option for your decor .\n");
+                            // PROMTE user to input name of item
+                            System.out.println("Enter name of item:");
+                            nameOfItem = scanner.nextLine();
+
+                            // PROMTE user to input quantity of item. Keep looping if input is non-numeric
+                            // character or negative number
+                            while (true) {
+                                System.out.println("Enter quantity of item:");
+                                if (scanner.hasNextInt()) {
+                                    quantity = scanner.nextInt();
+                                    if (quantity >= 0) {
+                                        // Valid quantity entered, break out of the loop
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Invalid input. Please enter a positive number (e.g 1, 2, 3, 4).\n");
+                                    }
+                                } else {
+                                    // Invalid input, consume the invalid token and prompt the user again
+                                    System.out.println("Invalid input. Please enter a non-negative number.\n");
+                                    scanner.next(); // Consume the invalid token
                                 }
                             }
+
+                            // PROMTE user to input true/false value for type of item.
+                            // Keep prompting until at least one type is selected
+                            while (!isGreenery && !isVases && !isTableRunner) {
+                                // Prompt user for greenery option
+                                isGreenery = promptForBoolean(
+                                        "Is your item a Greenery? (Enter 'Y' for yes and 'N' for no)",
+                                        scanner);
+                                if (!isGreenery) {
+                                    // If greenery is false, prompt for vases option
+                                    isVases = promptForBoolean(
+                                            "Is your item a Vase? (Enter 'Y' for yes and 'N' for no)",
+                                            scanner);
+                                    if (!isVases) {
+                                        // If both greenery and vases are false, prompt for table runner option
+                                        isTableRunner = promptForBoolean(
+                                                "Is your item a Table Runner? (Enter 'Y' for yes and 'N' for no)",
+                                                scanner);
+                                        if (!isTableRunner) {
+                                            System.out.println("\nYou CANNOT enter 'N' for all three.");
+                                            System.out.println("You MUST choose the 'Y' option for your decor .\n");
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Create a new Inventory object using the provided parameters
+                            Inventory newItem = new Inventory(nameOfItem, quantity, isGreenery, isVases, isTableRunner);
+
+                            // Add the newly created Inventory object to the inventoryList
+                            inventoryList.add(newItem);
+
+                            // Print message and object representation
+                            System.out.println(newItem.toStringDetails());
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("\nCaught InputMismatchException. Please enter a valid entry.");
+                        } catch (Exception e) {
+                            System.out.println(
+                                    "\nCaught Exception. There may be a possible error that occurred during user input.");
                         }
-                    }
+                        break;
 
-                    // Create a new Inventory object using the provided parameters
-                    Inventory newItem = new Inventory(nameOfItem, quantity, isGreenery, isVases, isTableRunner);
+                    case 2:
+                        break;
 
-                    // Add the newly created Inventory object to the inventoryList
-                    inventoryList.add(newItem);
+                    case 3:
+                        break;
 
-                    // Print message and object representation
-                    System.out.println("\nItem added to inventory:\n");
-                    System.out.println(newItem.toStringDetails());
+                    // Exit Program
+                    case 4:
+                        System.out.println("\nYou selected to exit the program");
+                        System.out.println("Have a great day!\n");
 
-                    // } catch (InputMismatchException e) {
-                    // System.out.println("\nCaught InputMismatchException. Please enter a valid
-                    // entry.");
-                    // }
-                    // catch (Exception e) {
-                    // System.out.println(
-                    // "\nCaught Exception. There may be a possible error that occurred during user
-                    // input.");
-                    // }
-                    break;
+                        exitProgram = true; // Set exit flag to true to terminate the loop
+                        break;
 
-                case 2:
-                    break;
-
-                case 3:
-                    break;
-
-                case 4:
-                    break;
-
-                default:
-                    System.out.println("\nInvalid input. Please enter a number between 1 and 4.\n");
+                    default:
+                        System.out.println("\nInvalid input. Please enter a number between 1 and 4.\n");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nCaught InputMismatchException. Please enter a valid entry.\n");
+                scanner.nextLine(); // Clear the invalid input from the scanner
             }
-        } catch (InputMismatchException e) {
-            System.out.println("\nCaught InputMismatchException. Please enter a valid entry.\n");
+
         }
 
         scanner.close(); // Closing scanner to release resources
+
     }
 
     /**
