@@ -4,3 +4,4 @@ InventoryProcessor.class
 InventoryFileManager.class
 CreateTextReport.class
 CreateCSVInventoryReport.class
+HelperFunctions.class
