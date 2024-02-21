@@ -198,7 +198,7 @@ public class InventoryProcessor {
     private static void generateInventoryReport() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory_report.csv"))) {
             // Write headers
-            writer.write("TYPE,NAME,QUANITY\n");
+            writer.write("TYPE,NAME,QUANTITY\n");
 
             // Write inventory items
             writeInventoryByTypeToCSV("Greenery", inventoryList.stream().filter(Inventory::isTypeGreeneries).toList(),
