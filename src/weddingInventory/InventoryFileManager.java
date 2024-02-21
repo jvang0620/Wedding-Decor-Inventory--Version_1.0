@@ -18,7 +18,7 @@ public class InventoryFileManager {
     public static void writeInventoryToCSV(List<Inventory> inventoryList) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CSV_FILE_PATH))) {
             // Write the header line to the CSV file
-            writer.println("Type,Name,Quantity");
+            writer.println("TYPE,NAME,QUANTITY");
 
             // Iterate over each Inventory object and write its data to the CSV file
             for (Inventory item : inventoryList) {
