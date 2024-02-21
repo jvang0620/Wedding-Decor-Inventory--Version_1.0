@@ -1,3 +1,4 @@
+//package
 package src.weddingInventory;
 
 public class Inventory {

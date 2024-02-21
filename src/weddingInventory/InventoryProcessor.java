@@ -10,7 +10,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class runApp {
+public class InventoryProcessor {
 
     private static List<Inventory> inventoryList = new ArrayList<>();
 
