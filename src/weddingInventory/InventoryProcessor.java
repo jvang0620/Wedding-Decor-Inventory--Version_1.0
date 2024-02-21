@@ -3,6 +3,8 @@ package src.weddingInventory;
 
 //imports
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -262,9 +264,18 @@ public class InventoryProcessor {
             throws IOException {
         if (!items.isEmpty()) {
             writer.write("\nType: " + type + "\n");
-            writer.write(String.format("%-65s %-10s%n", "Name", "Quantity"));
-            for (Inventory item : items) {
-                writer.write(String.format("%-65s %-10d%n", item.getNameOfItem(), item.getQuantity()));
+            writer.write(String.format("%-5s %-65s %-10s%n", "#", "Item Name", "Quantity"));
+
+            // Convert the immutable list to a mutable list
+            List<Inventory> mutableItems = new ArrayList<>(items);
+
+            // Sort the items alphabetically by name
+            Collections.sort(mutableItems, Comparator.comparing(Inventory::getNameOfItem));
+
+            // Write each item with a numbered list
+            for (int i = 0; i < mutableItems.size(); i++) {
+                Inventory item = mutableItems.get(i);
+                writer.write(String.format("%-5d %-65s %-10d%n", i + 1, item.getNameOfItem(), item.getQuantity()));
             }
         }
     }
