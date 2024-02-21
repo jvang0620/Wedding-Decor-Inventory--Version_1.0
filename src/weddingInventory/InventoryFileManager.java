@@ -8,7 +8,7 @@ import java.util.List;
 public class InventoryFileManager {
 
     // Variable to hold the file path of the CSV file
-    private static final String CSV_FILE_PATH = "inventory_report.csv";
+    private static final String CSV_FILE_PATH = "Inventory_Report.csv";
 
     /**
      * Writes the inventory data to a CSV file.

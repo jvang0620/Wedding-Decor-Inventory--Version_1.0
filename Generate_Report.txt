@@ -1,0 +1,31 @@
+Inventory Report
+----------------
+
+Type: Greenery
+Name                                                              Quantity  
+Artificial Greenery Garlands                                      30        
+Artificial Eucalyptus & Willow Leaf Garland w/ White Flowers      10        
+Artificial Flowers                                                20        
+Green Flowers                                                     25        
+
+Type: Vase
+Name                                                              Quantity  
+Clear Vases                                                       67        
+Gold Vases                                                        55        
+Clear Glass Bud Vases                                             48        
+Gold Votive Candle Holders                                        72        
+Silver Vases                                                      90        
+Clear Heavy Duty Vases                                            75        
+Rose Vases                                                        15        
+Eastland Cylinder Pillar Candle Holder Vases                      25        
+Bulk Glass Flower Bud Vases                                       30        
+Gold Crystal Beaded Trumpet Vases                                 65        
+Pilsner Trumpet Vases                                             45        
+
+Type: Table Runner
+Name                                                              Quantity  
+Green Runners                                                     50        
+Dusty Sage Green Cheesecloth Table Runners                        24        
+Rose Gold Sequin Tablecloths                                      20        
+Vintage Floral Lace Table Runner                                  25        
+White Chiffon Table Runner                                        55        

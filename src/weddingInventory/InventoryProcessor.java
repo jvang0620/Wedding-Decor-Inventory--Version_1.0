@@ -160,9 +160,9 @@ public class InventoryProcessor {
                         }
                         break;
 
-                    // Generate Report
+                    // Generate a text file report
                     case 3:
-                        generateInventoryReport();
+                        generateTextReport();
                         break;
 
                     // Exit Program
@@ -196,7 +196,7 @@ public class InventoryProcessor {
      * Generates a report of the overall inventory in a CSV file.
      */
     private static void generateInventoryReport() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory_report.csv"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Inventory_Report.csv"))) {
             // Write headers
             writer.write("TYPE,NAME,QUANTITY\n");
 
@@ -225,6 +225,47 @@ public class InventoryProcessor {
             throws IOException {
         for (Inventory item : items) {
             writer.write(String.format("%s,%s,%d\n", type, item.getNameOfItem(), item.getQuantity()));
+        }
+    }
+
+    /**
+     * Generates a report of the overall inventory in a text file.
+     */
+    private static void generateTextReport() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Generate_Report.txt"))) {
+            // Write headers
+            writer.write("Inventory Report\n");
+            writer.write("----------------\n");
+
+            // Write inventory items
+            writeInventoryByTypeToText("Greenery", inventoryList.stream().filter(Inventory::isTypeGreeneries).toList(),
+                    writer);
+            writeInventoryByTypeToText("Vase", inventoryList.stream().filter(Inventory::isTypeVases).toList(), writer);
+            writeInventoryByTypeToText("Table Runner",
+                    inventoryList.stream().filter(Inventory::isTypeTableRunners).toList(), writer);
+
+            System.out.println("Text report generated successfully.");
+        } catch (IOException e) {
+            System.out.println("Error generating text report: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Writes inventory items of a specific type to the text file.
+     * 
+     * @param type   The type of inventory items.
+     * @param items  The list of inventory items.
+     * @param writer The BufferedWriter object for writing to the file.
+     * @throws IOException If an I/O error occurs.
+     */
+    private static void writeInventoryByTypeToText(String type, List<Inventory> items, BufferedWriter writer)
+            throws IOException {
+        if (!items.isEmpty()) {
+            writer.write("\nType: " + type + "\n");
+            writer.write(String.format("%-65s %-10s%n", "Name", "Quantity"));
+            for (Inventory item : items) {
+                writer.write(String.format("%-65s %-10d%n", item.getNameOfItem(), item.getQuantity()));
+            }
         }
     }
 
