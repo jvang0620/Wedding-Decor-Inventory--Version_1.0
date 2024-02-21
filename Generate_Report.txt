@@ -22,8 +22,9 @@ Type: Vase
 10    Golden Wedding Centerpieces Metal Vases                           25        
 11    Pilsner Trumpet Vases                                             45        
 12    Rose Vases                                                        15        
-13    Silver Vases                                                      90        
-14    Tall Clear Glass Club Centerpiece Vases                           10        
+13    Sage Bud Vases                                                    45        
+14    Silver Vases                                                      90        
+15    Tall Clear Glass Club Centerpiece Vases                           10        
 
 Type: Table Runner
 #     Item Name                                                         Quantity  
