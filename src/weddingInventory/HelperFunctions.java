@@ -1,7 +1,11 @@
+//package
 package src.weddingInventory;
 
+//imports
 import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class HelperFunctions {
 
@@ -18,10 +22,17 @@ public class HelperFunctions {
     public static void printInventoryByType(String type, List<Inventory> items) {
         if (!items.isEmpty()) {
             System.out.println("Type: " + type);
-            System.out.printf("%-20s %-10s%n", "Name", "Quantity");
-            for (Inventory item : items) {
-                System.out.printf("%-20s %-10d%n", item.getNameOfItem(), item.getQuantity());
+            System.out.printf("%-5s %-65s %-10s%n", "#", "Item Name", "Quantity");
+
+            // Sort the items alphabetically by name
+            Collections.sort(items, Comparator.comparing(Inventory::getNameOfItem));
+
+            // Iterate over the sorted items and print them with numbered list
+            for (int i = 0; i < items.size(); i++) {
+                Inventory item = items.get(i);
+                System.out.printf("%-5d %-65s %-10d%n", i + 1, item.getNameOfItem(), item.getQuantity());
             }
+
             System.out.println(); // Add a newline after printing items of this type
         }
     }
