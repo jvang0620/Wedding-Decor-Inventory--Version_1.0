@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class InventoryProcessor {
 
@@ -87,17 +84,17 @@ public class InventoryProcessor {
                             // Keep prompting until at least one type is selected
                             while (!isGreenery && !isVases && !isTableRunner) {
                                 // Prompt user for greenery option
-                                isGreenery = promptForBoolean(
+                                isGreenery = HelperFunctions.promptForBoolean(
                                         "Is your item a Greenery? (Enter 'Y' for yes and 'N' for no)",
                                         scanner);
                                 if (!isGreenery) {
                                     // If greenery is false, prompt for vases option
-                                    isVases = promptForBoolean(
+                                    isVases = HelperFunctions.promptForBoolean(
                                             "Is your item a Vase? (Enter 'Y' for yes and 'N' for no)",
                                             scanner);
                                     if (!isVases) {
                                         // If both greenery and vases are false, prompt for table runner option
-                                        isTableRunner = promptForBoolean(
+                                        isTableRunner = HelperFunctions.promptForBoolean(
                                                 "Is your item a Table Runner? (Enter 'Y' for yes and 'N' for no)",
                                                 scanner);
                                         if (!isTableRunner) {
@@ -150,13 +147,13 @@ public class InventoryProcessor {
                             }
 
                             // Print greenery items
-                            printInventoryByType("Greenery", greeneryItems);
+                            HelperFunctions.printInventoryByType("Greenery", greeneryItems);
 
                             // Print vase items
-                            printInventoryByType("Vase", vaseItems);
+                            HelperFunctions.printInventoryByType("Vase", vaseItems);
 
                             // Print table runner items
-                            printInventoryByType("Table Runner", tableRunnerItems);
+                            HelperFunctions.printInventoryByType("Table Runner", tableRunnerItems);
                         }
                         break;
 
@@ -192,46 +189,4 @@ public class InventoryProcessor {
 
     }
 
-    /**
-     * This method takes the type of inventory items and a list of inventory items
-     * as parameters.
-     * It prints the type first and then loops through the items to print their
-     * names and quantities.
-     * If the list of items is empty, it does not print anything for that type.
-     * 
-     * @param type
-     * @param items
-     */
-    private static void printInventoryByType(String type, List<Inventory> items) {
-        if (!items.isEmpty()) {
-            System.out.println("Type: " + type);
-            System.out.printf("%-20s %-10s%n", "Name", "Quantity");
-            for (Inventory item : items) {
-                System.out.printf("%-20s %-10d%n", item.getNameOfItem(), item.getQuantity());
-            }
-            System.out.println(); // Add a newline after printing items of this type
-        }
-    }
-
-    /**
-     * Prompts the user for a boolean value (Y/N) and keeps prompting until valid
-     * input is provided.
-     * 
-     * @param prompt  The prompt to display to the user.
-     * @param scanner The scanner object to read user input.
-     * @return The boolean value entered by the user.
-     */
-    private static boolean promptForBoolean(String prompt, Scanner scanner) {
-        while (true) {
-            System.out.println(prompt);
-            String input = scanner.next().toUpperCase(); // Convert input to uppercase for case-insensitive comparison
-            if (input.equals("Y")) {
-                return true;
-            } else if (input.equals("N")) {
-                return false;
-            } else {
-                System.out.println("\nInvalid input. Please enter 'Y' for yes or 'N' for no. \n");
-            }
-        }
-    }
 }
