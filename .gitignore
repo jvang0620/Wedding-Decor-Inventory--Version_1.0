@@ -1,4 +1,4 @@
 App.class
 Inventory.class
-runApp.class
+InventoryProcessor.class
 InventoryFileManager.class

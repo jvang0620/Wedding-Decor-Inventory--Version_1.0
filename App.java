@@ -1,12 +1,12 @@
 
 //import classes
-import src.weddingInventory.runApp;
+import src.weddingInventory.InventoryProcessor;
 
 public class App {
 
     public static void main(String[] args) {
 
-        runApp.processUserInput();
+        InventoryProcessor.processUserInput();
 
     }
 
