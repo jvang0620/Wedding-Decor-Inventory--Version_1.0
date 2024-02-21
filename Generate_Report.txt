@@ -14,14 +14,16 @@ Type: Vase
 2     Clear Glass Bud Vases                                             48        
 3     Clear Heavy Duty Vases                                            75        
 4     Clear Vases                                                       67        
-5     Eastland Cylinder Pillar Candle Holder Vases                      25        
-6     Gold Crystal Beaded Trumpet Vases                                 65        
-7     Gold Vases                                                        55        
-8     Gold Votive Candle Holders                                        72        
-9     Pilsner Trumpet Vases                                             45        
-10    Rose Vases                                                        15        
-11    Silver Vases                                                      90        
-12    Tall Clear Glass Club Centerpiece Vases                           10        
+5     DIY Haning Flower Vases                                           50        
+6     Eastland Cylinder Pillar Candle Holder Vases                      25        
+7     Gold Crystal Beaded Trumpet Vases                                 65        
+8     Gold Vases                                                        55        
+9     Gold Votive Candle Holders                                        72        
+10    Golden Wedding Centerpieces Metal Vases                           25        
+11    Pilsner Trumpet Vases                                             45        
+12    Rose Vases                                                        15        
+13    Silver Vases                                                      90        
+14    Tall Clear Glass Club Centerpiece Vases                           10        
 
 Type: Table Runner
 #     Item Name                                                         Quantity  

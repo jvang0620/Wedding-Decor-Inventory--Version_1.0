@@ -2,3 +2,4 @@ App.class
 Inventory.class
 InventoryProcessor.class
 InventoryFileManager.class
+CreateTextReport.class
