@@ -147,13 +147,13 @@ public class InventoryProcessor {
                             }
 
                             // Print greenery items
-                            HelperFunctions.printInventoryByType("Greenery", greeneryItems);
+                            HelperFunctions.printInventoryByType("Greeneries", greeneryItems);
 
                             // Print vase items
-                            HelperFunctions.printInventoryByType("Vase", vaseItems);
+                            HelperFunctions.printInventoryByType("Vases", vaseItems);
 
                             // Print table runner items
-                            HelperFunctions.printInventoryByType("Table Runner", tableRunnerItems);
+                            HelperFunctions.printInventoryByType("Table Runners", tableRunnerItems);
                         }
                         break;
 
