@@ -126,6 +126,10 @@ public class InventoryProcessor {
                         }
                         break;
 
+                    // TODO: Edit Inventory
+                    case 2:
+                        break;
+
                     // View Inventory
                     case 3:
                         System.out.println("\n******** View Inventory ********\n");

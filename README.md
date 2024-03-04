@@ -1,8 +1,10 @@
 # Wedding Decor Inventory Application
 
+![Program](imgs/Application.JPG)
+
 ### Overview
 
-Welcome to our Wedding Decor Inventory Application! This program is designed to streamline the process of managing inventory for wedding planners and decorators. With features tailored to the unique needs of wedding professionals, our system offers a comprehensive solution for organizing, tracking, and reporting on wedding decor items.
+Welcome to our Wedding Decor Inventory Application! This terminal program is designed to streamline the process of managing inventory for wedding planners and decorators. With features tailored to the unique needs of wedding professionals, our system offers a comprehensive solution for organizing, tracking, and reporting on wedding decor items.
 
 #Features
 
@@ -28,7 +30,9 @@ Welcome to our Wedding Decor Inventory Application! This program is designed to 
 
 1. Clone the repository to your local machine with one of the follow:
 
-   HTTPS: <pre><code>git clone https://github.com/jvang0620/Wedding-Decor-Inventory</code></pre>
+   HTTPS: <pre><code>git clone https://github.com/jvang0620/Wedding-Decor-Inventory--Version_1.0</code></pre>
+
+   https://github.com/jvang0620/Wedding-Decor-Inventory--Version_1.0
 
 2. **Compile**: Compile the Java source code using `javac App.java`.
 3. **Run**: Execute the compiled program with `java App`.
