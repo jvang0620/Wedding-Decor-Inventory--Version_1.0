@@ -31,10 +31,11 @@ public class InventoryProcessor {
                 // Displays the home page of the application.
                 System.out.println("\n******** Wedding Inventory App ******** \n");
                 System.out.println("1. Create Inventory");
-                System.out.println("2. View Inventory");
-                System.out.println("3. Generate Report");
-                System.out.println("4. Exit App \n");
-                System.out.println("**Please select a number (1 - 4)**");
+                System.out.println("2. Edit Inventory");
+                System.out.println("3. View Inventory");
+                System.out.println("4. Generate Report");
+                System.out.println("5. Exit App \n");
+                System.out.println("**Please select a number (1 - 5)**");
 
                 // Read user input
                 int number = scanner.nextInt();
@@ -126,7 +127,7 @@ public class InventoryProcessor {
                         break;
 
                     // View Inventory
-                    case 2:
+                    case 3:
                         System.out.println("\n******** View Inventory ********\n");
                         if (inventoryList.isEmpty()) {
                             System.out.println("Inventory is empty.");
@@ -158,12 +159,12 @@ public class InventoryProcessor {
                         break;
 
                     // Generate a text file report
-                    case 3:
+                    case 4:
                         CreateTextReport.generateTextReport(inventoryList);
                         break;
 
                     // Exit Program
-                    case 4:
+                    case 5:
                         System.out.println("\nYou selected to exit the program");
                         System.out.println("Have a great day!\n");
 
@@ -176,7 +177,7 @@ public class InventoryProcessor {
                         break;
 
                     default:
-                        System.out.println("\nInvalid input. Please enter a number between 1 and 4.\n");
+                        System.out.println("\nInvalid input. Please enter a number between 1 and 5.\n");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("\nCaught InputMismatchException. Please enter a valid entry.\n");
